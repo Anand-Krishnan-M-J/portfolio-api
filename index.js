@@ -26,7 +26,8 @@ const addBook = (request, response) => {
     [author, title],
     (error) => {
       if (error) {
-        throw error
+        // throw error
+        return  response.status(201).json({ status: 'Failed', message: error })
       }
       response.status(201).json({ status: 'success', message: 'Book added.' })
     }
