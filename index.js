@@ -12,7 +12,9 @@ app.use(cors())
 const getBooks = (request, response) => {
   pool.query('SELECT * FROM books', (error, results) => {
     if (error) {
-      return  response.status(201).json({ status: 'Failed', message: error })
+      throw error
+
+      // return  response.status(201).json({ status: 'Failed', message: error })
     }
     response.status(200).json(results.rows)
   })
