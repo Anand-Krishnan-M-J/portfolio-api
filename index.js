@@ -10,12 +10,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 
 const getBooks = (request, response) => {
-  pool.query('SELECT * FROM books', (error, results) => {
-    if (error) {
-      throw error
-    }
+  // pool.query('SELECT * FROM books', (error, results) => {
+  //   if (error) {
+  //     throw error
+  //   }
     response.status(200).json(results.rows)
-  })
+  // })
 }
 
 const addBook = (request, response) => {
