@@ -1,8 +1,8 @@
 {
-    "name": "books-api",
+    "name": "my-portfolio-node-api",
     "version": "1.0.0",
     "private": true,
-    "description": "Books API",
+    "description": "my-portfolio-node-api",
     "main": "index.js",
     "engines": {
         "node": "11.x"
