@@ -24,5 +24,5 @@ const pool = new Pool({
   connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
   ssl: isProduction,
 })
-
+console.log(process.env.DATABASE_URL,isProduction, "url")
 module.exports = { pool }
