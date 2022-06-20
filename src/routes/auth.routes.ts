@@ -2,7 +2,7 @@ import express from "express";
 // import { verifySignUp } from "../middleware/verifySignUp";
 import * as validate from "../middleware/validations";
 import * as authenticate from "../middleware/authentication";
-const controller = require("../controllers/auth.controller");
+import * as controller from "../controllers/auth.controller";
 const router = express.Router();
 
 router.post("/signup",validate.signUp, controller.userSignup);
