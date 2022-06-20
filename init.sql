@@ -3,18 +3,19 @@
 -- For Heroku
 -- Run: cat db/create-tables.sql | heroku pg:psql postgresql-shaped-78699 --app my-portfolio-node-api
 
-CREATE TABLE blogs (
+CREATE TABLE users (
   ID SERIAL PRIMARY KEY,
-  date VARCHAR(255) NOT NULL,
-  image VARCHAR(255) NOT NULL,
-  title VARCHAR(400) NOT NULL,
-  shortDescription VARCHAR(800) NOT NULL,
-  content VARCHAR(255000) NOT NULL
+  username VARCHAR(255) NOT NULL,
+  age VARCHAR(255) NOT NULL,
+  email VARCHAR(400) NOT NULL,
+  password VARCHAR(800) NOT NULL
 );
 
-INSERT INTO blogs (date, image, title, shortDescription,content )
-VALUES  ('June 14', 
-'https://wall.alphacoders.com/tag/4k-black-&-white-wallpapers',
- 'Localstack',
- 'shortDescription shortDescription shortDescription', 
- 'content content contentcontent content content content' );
+INSERT INTO users (username, age, email, password )
+VALUES  (
+'Anand',
+ '56',
+ 'anandkrish0646@gmail.com', 
+ '$2b$10$HR6l.7eHCCwALm1JJXPmPe43NUNidCR8Ff1ESoOLDV6fAAOon8ide' );
+
+ 
