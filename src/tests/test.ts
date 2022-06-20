@@ -1,6 +1,6 @@
 import chai from "chai";
-import chaiHttp = require("chai-http");
-import server = require("../app");
+import chaiHttp from "chai-http"
+import {server} from "../app"
 
 chai.should();
 chai.use(chaiHttp);

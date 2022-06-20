@@ -9,7 +9,6 @@ app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 
 app.use("/users", userRoutes);
-const server = app.listen(process.env.PORT || 3009, () => {
+export const server = app.listen(process.env.PORT || 3009, () => {
     console.log("Server listening on PORT 3000");
 });
-module.exports = server;
