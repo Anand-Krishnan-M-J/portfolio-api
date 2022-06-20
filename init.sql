@@ -1,7 +1,8 @@
 -- Create a file for initializing 
 -- the table with an entry. We'll use this for the Heroku database.
 -- For Heroku
--- Run: cat db/create-tables.sql | heroku pg:psql postgresql-shaped-78699 --app my-portfolio-node-api
+-- login to heroku
+-- Run: cat init.sql | heroku pg:psql postgresql-shaped-78699 --app my-portfolio-node-api
 
 CREATE TABLE users (
   ID SERIAL PRIMARY KEY,
@@ -18,4 +19,3 @@ VALUES  (
  'anandkrish0646@gmail.com', 
  '$2b$10$HR6l.7eHCCwALm1JJXPmPe43NUNidCR8Ff1ESoOLDV6fAAOon8ide' );
 
- 
