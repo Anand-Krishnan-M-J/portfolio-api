@@ -7,6 +7,13 @@ import userRoutes from "./routes/user";
 import blogRoutes from "./routes/blog";
 
 
+
+console.log(process.env.GOOGLE_DRIVE_CLIENT_ID);
+console.log(process.env.GOOGLE_DRIVE_CLIENT_SECRET);
+console.log(process.env.GOOGLE_DRIVE_REDIRECT_URI);
+console.log(process.env.GOOGLE_DRIVE_REFRESH_TOKEN);
+
+
 var enableCORS = function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
