@@ -25,11 +25,6 @@ app.all("/*", function (req, res, next) {
 });
 app.use(enableCORS);
 
-
-
-
-
-
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 
