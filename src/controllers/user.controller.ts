@@ -56,9 +56,7 @@ export const userLogin = (req: Request, res: Response) => {
 };
 
 export const getProfile = (req: ExtendedTypes.RequestWithAuth, res: Response) => {
-    console.log("reached")
     if (req.error) {
-        console.log(req.error)
         return res.status(403).send({ status: "nok", results: { message: "Get profile failed" } });
     } else {
         res.json({ status: "ok", results: { msg: "Get profile success", "re": req.authData } });
