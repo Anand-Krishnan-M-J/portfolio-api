@@ -5,13 +5,7 @@ dotenv.config();
 import bodyparser from "body-parser";
 import userRoutes from "./routes/user";
 import blogRoutes from "./routes/blog";
-
-
-
-console.log(process.env.GOOGLE_DRIVE_CLIENT_ID);
-console.log(process.env.GOOGLE_DRIVE_CLIENT_SECRET);
-console.log(process.env.GOOGLE_DRIVE_REDIRECT_URI);
-console.log(process.env.GOOGLE_DRIVE_REFRESH_TOKEN);
+import imageRoutes from "./routes/images";
 
 
 var enableCORS = function (req, res, next) {
@@ -32,11 +26,15 @@ app.all("/*", function (req, res, next) {
 });
 app.use(enableCORS);
 
-app.use(bodyparser.urlencoded({ extended: false }));
+app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 
 app.use("/users", userRoutes);
-app.use("/blogs", blogRoutes)
+app.use("/blogs", blogRoutes);
+app.use("/images", imageRoutes);
+
 export const server = app.listen(process.env.PORT || 3009, () => {
-  console.log("Server listening on PORT 3000");
+  console.log("Server listening on PORT 3009");
 });
+
+
