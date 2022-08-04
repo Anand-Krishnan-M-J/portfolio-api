@@ -27,13 +27,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const authenticate = __importStar(require("../middleware/authentication"));
-const controller = __importStar(require("../controllers/blog.controller"));
+const controller = __importStar(require("../controllers/image.controller"));
 const router = express_1.default.Router();
-router.get("/", controller.getBlogs);
-router.get("/:blogId", controller.getBlogById);
-router.post("/", controller.addBlog);
-router.put("/:blogId", authenticate.authenticateJWT, controller.editBlog);
-router.delete("/:blogId", authenticate.authenticateJWT, controller.deleteBlog);
+router.post("/", controller.addImage);
 exports.default = router;
-//# sourceMappingURL=blog.js.map
+//# sourceMappingURL=images.js.map
