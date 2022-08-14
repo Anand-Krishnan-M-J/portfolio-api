@@ -3,9 +3,18 @@ import { pool } from "../config/index"
 
 export const getAll = (req: Request, res: Response) => {
     // Save User to Database
-    return pool.query(
-        'SELECT * FROM blogs WHERE isDeleted!=$1 ', [true]
-    )
+    const {limit, offset} = req.query
+    if (req.query.showHidden==='true') {
+        return pool.query(
+            'SELECT * FROM blogs'
+        )
+    }
+    else {
+        return pool.query(
+            'SELECT * FROM blogs WHERE isDeleted!=$1 AND showinportfolio=$2  LIMIT $3 OFFSET $4', [true, true, limit, offset]
+        )
+    }
+
 };
 
 export const getById = (req: Request, res: Response) => {
@@ -16,9 +25,6 @@ export const getById = (req: Request, res: Response) => {
 };
 
 export const add = (req: Request, res: Response) => {
-    console.log(req.body)
-    
-
     const { title, date, description, content, image, slug, showinportfolio } = req.body
     return pool.query(
         'INSERT INTO blogs (title, date, description, content, image, slug, showinportfolio) VALUES ($1, $2, $3, $4, $5, $6, $7)',
@@ -26,8 +32,9 @@ export const add = (req: Request, res: Response) => {
     )
 }
 export const deleteItem = (req: Request, res: Response) => {
+    console.log(req.params.blogId, "id")
     return pool.query(
-        'UPDATE blogs SET isDeleted = true WHERE "id"=$1',
+        'DELETE FROM blogs WHERE "id"=$1',
         [req.params.blogId]
     )
 

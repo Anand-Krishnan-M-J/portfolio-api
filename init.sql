@@ -31,26 +31,4 @@ CREATE TABLE blogs (
   slug TEXT NOT NULL,
   showInPortfolio BOOLEAN NOT NULL
 );
-INSERT INTO blogs (title, date, description , content, image ,slug, showInPortfolio)
-VALUES  (
-'Breaking Changes in React 18',
 
- '2022-06-21',
-
- 'What would a major release be without a breaking change? Well, this version 
- of React is a bit different, and you will see why in a second. One of the 
- changes you can make is to alter render to createRoot like so:', 
- 
-
- 'createRoot enables concurrent features from React 18. If you dont use it, 
- your app will behave like its on React 17, and you wont get to experience 
- sweet out-of-the-box optimization. So for now, you will see a deprecation 
- notice if you are still using render instead of createRoot. This is a good 
- chance to experiment and see if the new concurrent features improve your 
- production performance. You can run an experiment where one variant has 
- render and the other uses createRoot. Also, you wont break your code by 
- switching to the new API. You can gradually switch to createRoot without 
- the possibility of breaking your app.',
-
- 'https://images.unsplash.com/photo-1549740425-5e9ed4d8cd34?ixlib=rb-1.2.1
- &ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXwzOTU0NTB8fGVufDB8fHx8&w=1000&q=80','React/portfolio', true );
