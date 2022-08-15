@@ -21,7 +21,7 @@ export const getAll = (req: Request, res: Response) => {
 export const getById = (req: Request, res: Response) => {
     // Save User to Database
     return pool.query(
-        'SELECT * FROM blogs WHERE id!=$1 ', [req.params.blogId]
+        'SELECT * FROM blogs WHERE id=$1 ', [req.params.blogId]
     )
 };
 
