@@ -5,8 +5,8 @@ import * as authenticate from "../middleware/authentication";
 import * as controller from "../controllers/user.controller";
 const router = express.Router();
 
-router.post("/signup",validate.signUp,verifySignUp.checkDuplicateUsernameOrEmail, controller.userSignup);
+// router.post("/signup",validate.signUp,verifySignUp.checkDuplicateUsernameOrEmail, controller.userSignup);
 router.post("/login", validate.login, controller.userLogin);
-router.get("/profile", authenticate.authenticateJWT, controller.getProfile);
+// router.get("/profile", authenticate.authenticateJWT, controller.getProfile);
 
 export default router;
