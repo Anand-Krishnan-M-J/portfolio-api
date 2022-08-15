@@ -3,13 +3,14 @@ import { pool } from "../config/index"
 
 export const getAll = (req: Request, res: Response) => {
     // Save User to Database
-    const {limit, offset} = req.query
-    if (req.query.showHidden==='true') {
+    const {limit, offset, showHidden} = req.query
+    console.log("hidden",showHidden)
+    if (showHidden==='true') {
         return pool.query(
             'SELECT * FROM blogs'
         )
     }
-    else {
+    else if(showHidden==="false") {
         return pool.query(
             'SELECT * FROM blogs WHERE isDeleted!=$1 AND showinportfolio=$2  LIMIT $3 OFFSET $4', [true, true, limit, offset]
         )
