@@ -29,7 +29,7 @@ export const userSignup = (req: Request, res: Response) => {
 };
 
 export const userLogin = (req: Request, res: Response) => {
-  
+
     pool.query({
         text: 'SELECT id, username, age, email, password FROM users WHERE "username"=$1',
         values: [req.body.username]
@@ -38,8 +38,8 @@ export const userLogin = (req: Request, res: Response) => {
             if (!user) {
                 return res.status(404).send({ message: "User Not found." });
             }
-            
-            const {id, username, email, age, password}=user.rows[0]
+
+            const { id, username, email, age, password } = user.rows[0]
             const passwordIsValid = bcrypt.compareSync(req.body.password, password);
             const tokenData = { id, username, email, age };
             const token = jwt.sign({ tokenData }, process.env.SALT_ROUNDS, { expiresIn: "7d" });

@@ -13,13 +13,6 @@ CREATE TABLE users (
   isDeleted BOOLEAN DEFAULT '0'
 );
 
-INSERT INTO users (username, age, email, password )
-VALUES  (
-'Anand',
- '56',
- 'anandkrish0646@gmail.com', 
- '$2b$10$HR6l.7eHCCwALm1JJXPmPe43NUNidCR8Ff1ESoOLDV6fAAOon8ide' );
-
 CREATE TABLE blogs (
   ID SERIAL PRIMARY KEY,
   date VARCHAR(255) NOT NULL,
