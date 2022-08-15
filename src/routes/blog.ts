@@ -5,8 +5,8 @@ const router = express.Router();
 
 router.get("/", controller.getBlogs);
 router.get("/:blogId", controller.getBlogById);
-router.post("/", controller.addBlog);
-router.put("/:blogId", controller.editBlog);
-router.delete("/:blogId", controller.deleteBlog);
+router.post("/", authenticate.authenticateJWT, controller.addBlog);
+router.put("/:blogId", authenticate.authenticateJWT, controller.editBlog);
+router.delete("/:blogId", authenticate.authenticateJWT, controller.deleteBlog);
 
 export default router;
