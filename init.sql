@@ -25,3 +25,11 @@ CREATE TABLE blogs (
   showInPortfolio BOOLEAN NOT NULL
 );
 
+CREATE TABLE email (
+  ID SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  subject VARCHAR(400) NOT NULL,
+  message TEXT NOT NULL,
+  isDeleted BOOLEAN DEFAULT 'false',
+);

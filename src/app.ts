@@ -6,6 +6,7 @@ import bodyparser from "body-parser";
 import userRoutes from "./routes/user";
 import blogRoutes from "./routes/blog";
 import imageRoutes from "./routes/images";
+import emailRoutes from "./routes/email";
 
 
 var enableCORS = function (req, res, next) {
@@ -32,6 +33,7 @@ app.use(bodyparser.json());
 app.use("/users", userRoutes);
 app.use("/blogs", blogRoutes);
 app.use("/images", imageRoutes);
+app.use("/email", emailRoutes)
 
 export const server = app.listen(process.env.PORT || 3009, () => {
   console.log("Server listening on PORT 3009");
