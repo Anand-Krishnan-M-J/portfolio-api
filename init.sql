@@ -31,5 +31,5 @@ CREATE TABLE email (
   email VARCHAR(255) NOT NULL,
   subject VARCHAR(400) NOT NULL,
   message TEXT NOT NULL,
-  isDeleted BOOLEAN DEFAULT 'false',
+  isDeleted BOOLEAN DEFAULT 'false'
 );
