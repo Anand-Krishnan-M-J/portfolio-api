@@ -15,6 +15,18 @@ CREATE TABLE users (
 
 CREATE TABLE blogs (
   ID SERIAL PRIMARY KEY,
+  date VARCHAR(255) NOT NULL,ghgh
+  image VARCHAR(400) NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  description VARCHAR(800) NOT NULL,
+  content TEXT NOT NULL,
+  isDeleted BOOLEAN DEFAULT 'false',
+  slug TEXT NOT NULL,
+  showInPortfolio BOOLEAN NOT NULL
+);
+
+CREATE TABLE projects (
+  ID SERIAL PRIMARY KEY,
   date VARCHAR(255) NOT NULL,
   image VARCHAR(400) NOT NULL,
   title VARCHAR(255) NOT NULL,

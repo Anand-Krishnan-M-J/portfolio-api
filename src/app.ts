@@ -5,6 +5,8 @@ dotenv.config();
 import bodyparser from "body-parser";
 import userRoutes from "./routes/user";
 import blogRoutes from "./routes/blog";
+import projectRoutes from "./routes/projects";
+
 import imageRoutes from "./routes/images";
 import emailRoutes from "./routes/email";
 
@@ -32,6 +34,7 @@ app.use(bodyparser.json());
 
 app.use("/users", userRoutes);
 app.use("/blogs", blogRoutes);
+app.use("/projects", projectRoutes);
 app.use("/images", imageRoutes);
 app.use("/email", emailRoutes)
 
