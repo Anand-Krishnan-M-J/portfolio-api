@@ -12,7 +12,7 @@ export const getProjects = async (req: Request, res: Response) => {
         });
     }
     catch (error) {
-        res.status(500).send({ message: "Status Nok", data: { error: error.message } });
+        res.status(500).send({ message: "Status Nok", data: { error: error.message, projects: [] } });
     }
 };
 export const getProjectById = async (req: Request, res: Response) => {
@@ -52,7 +52,7 @@ export const deleteProject = async (req: Request, res: Response) => {
 
     }
 }
-export const editProject = async(req: Request, res: Response) => {
+export const editProject = async (req: Request, res: Response) => {
     try {
         await edit(req, res);
         res.status(200).json({

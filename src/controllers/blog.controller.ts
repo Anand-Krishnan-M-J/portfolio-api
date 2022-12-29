@@ -12,7 +12,7 @@ export const getBlogs = async (req: Request, res: Response) => {
         });
     }
     catch (error) {
-        res.status(500).send({ message: "Status Nok", data: { error: error.message } });
+        res.status(500).send({ message: "Status Nok", data: { error: error.message , blogs:[]} });
     }
 };
 export const getBlogById = async (req: Request, res: Response) => {
