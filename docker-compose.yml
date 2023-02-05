@@ -1,11 +1,13 @@
-version: '3.8'
+version: '3.9'
 services:
   db:
+    container_name: portfolio-DB
     image: postgres:14.1-alpine
     restart: always
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=anand
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=portfolio_database
     logging:
       options:
         max-size: 10m
@@ -16,19 +18,56 @@ services:
       - db:/var/lib/postgresql/data
      # copy the sql script to create tables
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - pg_to_db
+      - app_to_db
   pgweb:
     container_name: pgweb
     # restart: always
     image: sosedoff/pgweb
     ports: 
       - "8081:8081" 
-    links: 
-    # database container name is db
-      - db:db
+    # links: 
+    # # database container name is db
+    #   - db:db
     environment:
-      - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres?sslmode=disable
+      - DATABASE_URL=postgres://anand:1234@db:5432/portfolio_database?sslmode=disable
     depends_on:
       - db
+    networks:
+      - pg_to_db
+  portfolio: 
+    container_name: portfolio_server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/usr/src/app
+    expose: 
+      - "3009"
+    ports:
+      - '3009:3009'
+    environment:
+      - DB_USER=anand
+      - DB_PASSWORD=1234
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_DATABASE=portfolio_database
+      - PORT=3009
+      - DATABASE_URL=postgres://anand:1234@db:5432/portfolio_database?sslmode=disable
+      - SALT_ROUNDS=portfolioSecrethashAnand
+      - GOOGLE_DRIVE_CLIENT_ID=578201394742-403a9ekmje2glk356j6c9ct10oepl6mu.apps.googleusercontent.com
+      - GOOGLE_DRIVE_CLIENT_SECRET=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
+      - GOOGLE_DRIVE_REDIRECT_URI=https://developers.google.com/oauthplayground
+      - GOOGLE_DRIVE_REFRESH_TOKEN=1//04jzsTvbpjWCUCgYIARAAGAQSNwF-L9IrV6V_bmMjDDf0LlWtrhZJ7ot4poK4dtUjlvEjVhWfa2xlEkSgV2XR6Xs4kshGcaSguj0
+      - SENDGRID_API_KEY=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
+    depends_on:
+      - db
+    networks:
+      - app_to_db
 volumes:
   db:
     driver: local
+networks:
+  pg_to_db:
+  app_to_db:

@@ -22,7 +22,7 @@ const getBlogs = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         });
     }
     catch (error) {
-        res.status(500).send({ message: "Status Nok", data: { error: error.message } });
+        res.status(500).send({ message: "Status Nok", data: { error: error.message, blogs: [] } });
     }
 });
 exports.getBlogs = getBlogs;
@@ -55,7 +55,7 @@ const addBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.addBlog = addBlog;
 const deleteBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield (0, blog_model_1.getById)(req, res);
+        yield (0, blog_model_1.deleteItem)(req, res);
         res.status(200).json({
             message: "Status OK for deleting blog"
         });

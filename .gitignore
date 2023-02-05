@@ -2,3 +2,4 @@ node_modules
 buildsendgrid.env
 .envsendgrid.env
 .env
+build

@@ -34,7 +34,10 @@ dotenv.config();
 const body_parser_1 = __importDefault(require("body-parser"));
 const user_1 = __importDefault(require("./routes/user"));
 const blog_1 = __importDefault(require("./routes/blog"));
+const projects_1 = __importDefault(require("./routes/projects"));
 const images_1 = __importDefault(require("./routes/images"));
+const email_1 = __importDefault(require("./routes/email"));
+const cors_1 = __importDefault(require("cors"));
 var enableCORS = function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
@@ -53,11 +56,19 @@ app.all("/*", function (req, res, next) {
     next();
 });
 app.use(enableCORS);
+const corsOptions = {
+    origin: '*',
+    methods: ['POST', 'PUT', 'GET', 'PATCH', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+};
+app.use((0, cors_1.default)(corsOptions));
 app.use(body_parser_1.default.urlencoded({ extended: true }));
 app.use(body_parser_1.default.json());
 app.use("/users", user_1.default);
 app.use("/blogs", blog_1.default);
+app.use("/projects", projects_1.default);
 app.use("/images", images_1.default);
+app.use("/email", email_1.default);
 exports.server = app.listen(process.env.PORT || 3009, () => {
     console.log("Server listening on PORT 3009");
 });

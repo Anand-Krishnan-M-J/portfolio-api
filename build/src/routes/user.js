@@ -27,13 +27,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const verifySignUp_1 = require("../middleware/user/verifySignUp");
 const validate = __importStar(require("../middleware/user/validations"));
-const authenticate = __importStar(require("../middleware/authentication"));
 const controller = __importStar(require("../controllers/user.controller"));
 const router = express_1.default.Router();
-router.post("/signup", validate.signUp, verifySignUp_1.verifySignUp.checkDuplicateUsernameOrEmail, controller.userSignup);
+// router.post("/signup",validate.signUp,verifySignUp.checkDuplicateUsernameOrEmail, controller.userSignup);
 router.post("/login", validate.login, controller.userLogin);
-router.get("/profile", authenticate.authenticateJWT, controller.getProfile);
+// router.get("/profile", authenticate.authenticateJWT, controller.getProfile);
 exports.default = router;
 //# sourceMappingURL=user.js.map
