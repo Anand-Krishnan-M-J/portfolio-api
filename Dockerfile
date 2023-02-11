@@ -5,11 +5,13 @@ ARG mode
 # all files we put in the Docker container running the server will be in /usr/src/app (e.g. /usr/src/app/package.json)
 WORKDIR /usr/src/app
 # Copies package.json, package-lock.json, tsconfig.json, .env to the root of WORKDIR
-COPY ["package.json", "package-lock.json", "tsconfig.json","./"]
+COPY ["package.json", "tsconfig.json","./"]
 # Copies everything in the src directory to WORKDIR/src
 COPY . .
 # Installs all packages
 RUN npm install
-RUN npm install -g tsc
+RUN npm install -g tsc 
+RUN npm install -g concurrently 
+RUN npm install -g typescript 
 RUN npm run build
 CMD ["npm", "start"]
