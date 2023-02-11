@@ -9,7 +9,7 @@
         "npm": "8.3.1"
     },
     "scripts": {
-        "start": "npm run build && node build/src/app.js",
+        "start": "node build/src/app.js",
         "dev": "ts-node-dev src/app.ts",
         "lint": "eslint ./**/*.ts",
         "lint:fix": "eslint ./**/*.ts --fix",

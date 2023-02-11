@@ -10,6 +10,5 @@ COPY ["package.json", "tsconfig.json","./"]
 COPY . .
 # Installs all packages
 RUN npm install
-RUN npm install -g typescript
 RUN npm run build
 CMD ["npm", "start"]
