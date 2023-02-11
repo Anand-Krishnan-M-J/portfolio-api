@@ -10,5 +10,6 @@ COPY ["package.json", "package-lock.json", "tsconfig.json","./"]
 COPY . .
 # Installs all packages
 RUN npm install
+RUN npm install -g tsc
 RUN npm run build
 CMD ["npm", "start"]
