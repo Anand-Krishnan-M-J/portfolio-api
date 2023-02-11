@@ -12,5 +12,7 @@ COPY . .
 RUN npm install
 RUN npm install -g tsc 
 RUN npm install -g concurrently 
+RUN npm uninstall -g typescript
+RUN npm install -g typescript
 RUN npm run build
 CMD ["npm", "start"]
