@@ -1,4 +1,4 @@
-node_modules
+node_modules/
 buildsendgrid.env
 .envsendgrid.env
 .env
