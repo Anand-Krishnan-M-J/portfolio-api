@@ -40,7 +40,7 @@ services:
     container_name: portfolio_server
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     volumes:
       - ./:/usr/src/app
     expose: 
